@@ -1,0 +1,10 @@
+---
+# Sets up a blueflood master node
+
+- name: Install Java 7
+  apt: name=openjdk-7-jdk state=installed
+- name: Install Cassandra
+  template: src=cassandra-sources.list.j2 dest=/etc/apt/sources.list.d/cassandra-sources.list
+  notify:
+    - add cassandra key
+    - update apt
