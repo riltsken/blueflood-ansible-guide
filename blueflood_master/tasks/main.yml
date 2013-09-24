@@ -3,8 +3,10 @@
 
 - name: Install Java 7
   apt: name=openjdk-7-jdk state=installed
-- name: Install Cassandra
+- name: Setup Cassandra debian package
   template: src=cassandra-sources.list.j2 dest=/etc/apt/sources.list.d/cassandra-sources.list
   notify:
     - add cassandra key
     - update apt
+- name: Install Cassandra
+  apt: name=cassandra state=installed force=yes
