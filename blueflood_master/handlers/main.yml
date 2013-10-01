@@ -1,0 +1,9 @@
+---
+
+- name: update apt
+  apt: update-cache=yes
+- name: add cassandra key
+  shell: gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D;
+           gpg --export --armor F758CE318D77295D | sudo apt-key add -;
+- name: execute blueflood fixture
+  shell: cassandra-cli -f /data/blueflood/fixtures/initial_keyspace

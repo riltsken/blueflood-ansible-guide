@@ -10,3 +10,17 @@
     - update apt
 - name: Install Cassandra
   apt: name=cassandra state=installed force=yes
+- name: Create blueflood app directory
+  file: path=/data/blueflood/fixtures owner=root group=root mode=0755 recurse=true state=directory
+- name: Blueflood keyspace template
+  template: src=blueflood_initial_keyspace.j2 dest=/data/blueflood/fixtures/initial_keyspace
+  notify:
+    - execute blueflood fixture
+- name: Download blueflood jar
+  get_url: dest=/data/blueflood url=http://71fb4dd1d8d6e09fc125-36b01c5ff6fbd752b5761abbf82069e5.r53.cf1.rackcdn.com/blueflood-all-1.0.0-20130828.214150-1-jar-with-dependencies.jar
+- name: Create blueflood conf
+  template: src=blueflood.conf.j2 dest=/data/blueflood/blueflood.conf
+- name: Create blueflood log4j conf
+  template: src=log4j.conf.j2 dest=/data/blueflood/log4j.conf
+- name: Create script to start blueflood
+  template: src=start-blueflood.sh.j2 dest=/data/blueflood/start-blueflood.sh mode=755

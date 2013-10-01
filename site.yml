@@ -5,9 +5,4 @@
   sudo: yes
   roles:
    - blueflood_master
-  handlers:
-    - name: update apt
-      apt: update-cache=yes
-    - name: add cassandra key
-      shell: gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D;
-               gpg --export --armor F758CE318D77295D | sudo apt-key add -;
+
