@@ -1,4 +1,4 @@
-bluefluff-ansible
+blueflood-ansible-guide
 =================
 This guide will setup blueflood and cassandra on the same node to play around with
 
