@@ -8,7 +8,7 @@ https://github.com/rackerlabs/blueflood/wiki/10MinuteGuide
 Step 1:
 --------
 * virtualenv blueflood-ansible
-* source blueflood-ansible
+* source blueflood-ansible/bin/activate
 * pip install -r requirements.txt
 
 Step 2:
@@ -17,7 +17,7 @@ Step 2:
 
 Step 3:
 --------
-* playbook-ansible -i {your-production-host} site.yml
+* ansible-playbook -i {your-production-host} site.yml
 
 
 
